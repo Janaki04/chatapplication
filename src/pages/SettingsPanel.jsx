@@ -1,4 +1,3 @@
-// src/components/SettingsPanel.jsx
 import React, { useState } from 'react';
 import Notifications from './Notifications';
 import Privacy from './Privacy'; 
@@ -11,12 +10,10 @@ import NewCov from '../components/NewCov';
 export default function SettingsPanel({ onBackClick }) {
   const [activeOption, setActiveOption] = useState(null);
   
-  // Theme State Block
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState('Light'); 
   const [tempSelectedTheme, setTempSelectedTheme] = useState('Light');
 
-  // Notifications Checklist State Block
   const [notifications, setNotifications] = useState({
     messages: true,
     previews: true,
@@ -110,7 +107,6 @@ export default function SettingsPanel({ onBackClick }) {
       default:
         return (
           <div className="flex flex-col flex-1 animate-in fade-in duration-150">
-            {/* Top Back Nav Segment Row */}
             <div className="p-6 pb-4 flex items-center space-x-4">
               <button 
                 onClick={onBackClick} 
@@ -124,7 +120,6 @@ export default function SettingsPanel({ onBackClick }) {
               <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Settings</h1>
             </div>
 
-            {/* Profile Avatar Card Badge row */}
             <div className="px-6 py-4 flex items-center space-x-4 mb-4">
               <img 
                 className="w-14 h-14 rounded-full object-cover shadow-sm border border-gray-100"
@@ -137,7 +132,6 @@ export default function SettingsPanel({ onBackClick }) {
               </div>
             </div>
 
-            {/* Config Item Options Dynamic Row Renderer */}
             <div className="flex-1 overflow-y-auto px-4 space-y-0.5">
               {settingsOptions.map((option) => (
                 <div key={option.id} className="group">
@@ -162,21 +156,15 @@ export default function SettingsPanel({ onBackClick }) {
   return (
     <div className="relative flex flex-1 h-full bg-white overflow-hidden">
       
-      {/* LEFT PANEL COLUMN - Responsive behavior switches width classes */}
       <section className={`w-full md:w-80 bg-[#f8fafc] border-r border-gray-100 flex flex-col flex-shrink-0 ${
         activeOption ? 'flex' : 'flex md:flex'
       }`}>
         {renderLeftPanelContent()}
       </section>
 
-      {/* RIGHT COLUMN VIEWPORT - Desktop placeholder canvas */}
       <main className="flex-1 hidden md:flex flex-col bg-white overflow-hidden">
      <NewCov/>
       </main>
-
-      {/* ========================================== */}
-      {/* RESPONSIVE THEME PICKER OVERLAY DIALOG    */}
-      {/* ========================================== */}
       {isThemeModalOpen && (
         <div 
           className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-[0.5px] p-4 animate-in fade-in duration-200"
@@ -191,7 +179,6 @@ export default function SettingsPanel({ onBackClick }) {
               Choose Theme
             </h2>
 
-            {/* Radio Options List Frame */}
             <div className="space-y-3.5">
               {[
                 { id: 'Light', label: 'Light' },
@@ -205,7 +192,6 @@ export default function SettingsPanel({ onBackClick }) {
                     onClick={() => setTempSelectedTheme(theme.id)}
                     className="flex items-center space-x-3.5 cursor-pointer py-1.5 px-1 rounded-lg hover:bg-gray-50/50 transition-all group"
                   >
-                    {/* Custom Radio Control Bullet */}
                     <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${
                       isSelected ? 'border-blue-500 bg-white' : 'border-gray-300 group-hover:border-gray-400'
                     }`}>
@@ -213,7 +199,6 @@ export default function SettingsPanel({ onBackClick }) {
                         <div className="w-2 h-2 rounded-full bg-blue-500" />
                       )}
                     </div>
-                    {/* Label Text */}
                     <span className="text-xs font-semibold text-gray-700 group-hover:text-gray-900 transition-colors">
                       {theme.label}
                     </span>
@@ -222,7 +207,6 @@ export default function SettingsPanel({ onBackClick }) {
               })}
             </div>
 
-            {/* Action Trigger Buttons Footer */}
             <div className="flex items-center justify-end space-x-2 pt-1">
               <button
                 onClick={() => setIsThemeModalOpen(false)}
@@ -245,3 +229,53 @@ export default function SettingsPanel({ onBackClick }) {
     </div>
   );
 }
+
+
+
+const INITIAL_CHATS = [
+  { 
+    id: 1, name: 'Pink Panda', time: '9:36', unread: 0, pinned: true, isArchived: false, isGroup: false, avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80',
+    messages: [
+      { id: 101, text: 'Hi 👋, How are ya ?', sender: 'them', time: '0:12' },
+      { id: 102, text: 'Hi 👋 Panda, not bad, u ?', sender: 'me', time: '8:15' },
+      { id: 103, text: 'Can you send me an abstract image?', sender: 'me', time: '8:17' },
+      { id: 104, type: 'image', src: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80', sender: 'them', time: '10:35', reaction: '🔥' },
+      { id: 105, text: 'Can you send it as file ?', sender: 'me', time: '11:12' },
+      { id: 106, type: 'file', fileName: 'Abstract.png', sender: 'them', time: '11:25' },
+      { id: 107, text: 'Thnx!', sender: 'me', time: '11:28' }
+    ]
+  },
+  { 
+    id: 2, name: 'Dog Hat', time: '9:36', unread: 2, pinned: true, isArchived: false, isGroup: false, avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80',
+    messages: [
+      { id: 201, text: "Hey there!", sender: 'me', time: '9:30' },
+      { id: 202, text: "It's so quite outside 🤫", sender: 'them', time: '9:36' }
+    ]
+  },
+  {
+    id: 5, name: 'Animal Kingdom', time: '9:36', unread: 0, pinned: true, isArchived: false, isGroup: true, subtext: 'Pink Panda, Turtle, 212 others', avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80',
+    messages: [
+      { id: 501, text: 'Hi 👋, How are ya ?', sender: 'them', time: '0:12' },
+      { id: 502, text: 'Hi 👋 Panda, not bad, u ?', sender: 'me', time: '8:15' },
+      { id: 503, text: 'Can you send me an abstract image?', sender: 'me', time: '8:17' },
+      { id: 504, type: 'image', src: 'https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=600&q=80', sender: 'them', time: '10:35' },
+      { id: 505, text: 'Can you send it as file ?', sender: 'me', time: '11:12' },
+      { id: 506, type: 'file', fileName: 'Abstract.png', sender: 'them', time: '11:25' },
+      { id: 507, text: 'Thnx!', sender: 'me', time: '11:28' }
+    ]
+  },
+  { 
+    id: 3, name: 'Cute Turtle', time: '9:36', unread: 3, pinned: false, isArchived: false, isGroup: false, avatar: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=100&q=80',
+    messages: [{ id: 301, text: "That's It. Goodbye!", sender: 'them', time: '9:36' }]
+  },
+  { 
+    id: 4, name: 'Cool spirit', time: '9:36', unread: 0, pinned: false, isArchived: false, isGroup: false, avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80',
+    messages: [{ id: 401, text: 'Look what I found', sender: 'them', time: '9:36' }]
+  }
+];
+
+const CALL_LOGS = [
+  { id: 1, name: 'Dog Hat', time: 'May 26, 2:45 PM', type: 'incoming', missed: false, avatar: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=100&q=80' },
+  { id: 2, name: 'Pink Panda', time: 'May 25, 11:20 AM', type: 'outgoing', missed: false, avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80' },
+  { id: 3, name: 'Cute Turtle', time: 'May 24, 6:12 PM', type: 'incoming', missed: true, avatar: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=100&q=80' }
+];

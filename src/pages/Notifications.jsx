@@ -4,7 +4,6 @@ export default function Notifications({ onBack, notifications, onCheckboxChange 
   return (
     <div className="flex flex-col flex-1 animate-in fade-in duration-150">
       
-      {/* Sub Nav Bar Header Row Container */}
       <div className="p-6 pb-4 flex items-center space-x-4">
         <button 
           onClick={onBack} 
@@ -18,10 +17,8 @@ export default function Notifications({ onBack, notifications, onCheckboxChange 
         <h1 className="text-xl font-bold text-gray-900 tracking-tight">Notifications</h1>
       </div>
 
-      {/* Input Options Body Section */}
       <div className="flex-1 overflow-y-auto px-6 mt-4 space-y-5">
         
-        {/* Row Item 1 */}
         <div className="flex flex-col pb-4 border-b border-gray-200/60">
           <div className="flex items-start justify-between">
             <div className="flex flex-col pr-4">
@@ -37,7 +34,6 @@ export default function Notifications({ onBack, notifications, onCheckboxChange 
           </div>
         </div>
 
-        {/* Row Item 2 */}
         <div className="flex flex-col pb-4 border-b border-gray-200/60">
           <div className="flex items-start justify-between">
             <div className="flex flex-col pr-4">
@@ -52,7 +48,6 @@ export default function Notifications({ onBack, notifications, onCheckboxChange 
           </div>
         </div>
 
-        {/* Row Item 3 */}
         <div className="flex flex-col pb-4 border-b border-gray-200/60">
           <div className="flex items-start justify-between">
             <div className="flex flex-col pr-4">
@@ -67,7 +62,6 @@ export default function Notifications({ onBack, notifications, onCheckboxChange 
           </div>
         </div>
 
-        {/* Row Item 4 */}
         <div className="flex flex-col pb-4 border-b border-gray-200/60">
           <div className="flex items-start justify-between">
             <div className="flex flex-col pr-4">
@@ -82,7 +76,6 @@ export default function Notifications({ onBack, notifications, onCheckboxChange 
           </div>
         </div>
 
-        {/* Row Item 5 */}
         <div className="flex flex-col pb-4">
           <div className="flex items-start justify-between">
             <div className="flex flex-col pr-4">

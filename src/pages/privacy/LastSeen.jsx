@@ -1,4 +1,3 @@
-// src/components/LastSeen.jsx
 import React, { useState } from 'react';
 
 export default function LastSeen({ onBack, currentValue = 'Everyone', onChange }) {
@@ -18,7 +17,6 @@ export default function LastSeen({ onBack, currentValue = 'Everyone', onChange }
   return (
     <div className="flex flex-col flex-1 bg-[#f8fafc] h-full w-full animate-in slide-in-from-right-5 duration-200 select-none">
       
-      {/* Sub Header */}
       <div className="p-4 md:p-6 pb-3 flex items-center space-x-4">
         <button 
           onClick={onBack} 
@@ -32,15 +30,12 @@ export default function LastSeen({ onBack, currentValue = 'Everyone', onChange }
         <h1 className="text-sm font-bold text-gray-900 tracking-tight">Last Seen</h1>
       </div>
 
-      {/* Content Container */}
       <div className="flex-1 overflow-y-auto px-6 md:px-8 py-2 w-full max-w-xs md:max-w-none mx-auto space-y-6">
         
-        {/* Helper Explainer Caption */}
         <p className="text-[10px] text-blue-500 font-semibold leading-relaxed tracking-normal max-w-[250px] md:max-w-md">
           If you don't share your Last Seen, you won't be able to see other people's Last Seen
         </p>
 
-        {/* Radio Option Stack Frame Layout */}
         <div className="space-y-4">
           {options.map((option, index) => {
             const isSelected = selected === option.id;
@@ -50,7 +45,6 @@ export default function LastSeen({ onBack, currentValue = 'Everyone', onChange }
                   onClick={() => handleSelect(option.id)}
                   className="flex items-center space-x-4 py-2.5 cursor-pointer group"
                 >
-                  {/* Custom Radio Button Circle Frame */}
                   <div className={`w-4 h-4 rounded-full border flex items-center justify-center transition-all ${
                     isSelected ? 'border-blue-500 bg-white' : 'border-gray-400 group-hover:border-gray-600'
                   }`}>
@@ -59,7 +53,6 @@ export default function LastSeen({ onBack, currentValue = 'Everyone', onChange }
                     )}
                   </div>
 
-                  {/* Option Text Label */}
                   <span className={`text-xs font-semibold tracking-wide transition-colors ${
                     isSelected ? 'text-gray-900' : 'text-gray-600 group-hover:text-gray-900'
                   }`}>
@@ -67,7 +60,6 @@ export default function LastSeen({ onBack, currentValue = 'Everyone', onChange }
                   </span>
                 </div>
 
-                {/* Optional underline separation layout accent */}
                 {index < options.length - 1 && (
                   <div className="w-full border-b border-gray-200/60 mt-1" />
                 )}

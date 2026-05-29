@@ -1,8 +1,6 @@
-// src/components/BlockedContactsView.jsx
 import React, { useState } from 'react';
 
 export default function BlockedContactsView({ onBack, onCountChange }) {
-  // Current blocked list state
   const [contacts, setContacts] = useState([
     { id: 1, name: 'Dinesh', status: 'Enjoy life to the fullest', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80' },
     { id: 2, name: 'Dog Hat', status: 'You can call me at random..', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80' },
@@ -11,11 +9,9 @@ export default function BlockedContactsView({ onBack, onCountChange }) {
     { id: 5, name: 'strange cat', status: 'Omw to discover myself', avatar: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=100&q=80' },
   ]);
 
-  // Modal display control state
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Available directory mock pool of unblocked connections
   const [availablePool, setAvailablePool] = useState([
     { id: 101, name: 'Alice Walker', status: 'At the gym 🏋️‍♂️', avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80' },
     { id: 102, name: 'Bob Miller', status: 'Coding all night...', avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=100&q=80' },
@@ -33,15 +29,13 @@ export default function BlockedContactsView({ onBack, onCountChange }) {
     const updated = [...contacts, newContact];
     setContacts(updated);
     
-    // Remove from temporary pick list pool
     setAvailablePool(availablePool.filter(c => c.id !== newContact.id));
     
     if (onCountChange) onCountChange(updated.length);
-    setIsModalOpen(false); // Close Modal
+    setIsModalOpen(false); 
     setSearchQuery('');
   };
 
-  // Filter pool items by current search term input
   const filteredPool = availablePool.filter(c => 
     c.name.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -63,10 +57,8 @@ export default function BlockedContactsView({ onBack, onCountChange }) {
         <h1 className="text-sm font-bold text-gray-900 tracking-tight">Blocked Contacts</h1>
       </div>
 
-      {/* Content Area */}
       <div className="flex-1 overflow-y-auto px-6 md:px-8 py-2 w-full max-w-xs md:max-w-none mx-auto space-y-4">
         
-        {/* Action Button Trigger Link Frame */}
         <div 
           onClick={() => setIsModalOpen(true)}
           className="flex items-center justify-between pb-3 border-b border-gray-200/60 cursor-pointer group"
@@ -79,7 +71,6 @@ export default function BlockedContactsView({ onBack, onCountChange }) {
           </svg>
         </div>
 
-        {/* Dynamic Card Stack List */}
         <div className="space-y-2.5 pt-1">
           {contacts.map((contact) => (
             <div 
@@ -102,7 +93,6 @@ export default function BlockedContactsView({ onBack, onCountChange }) {
                 </div>
               </div>
 
-              {/* Dismiss Trigger Icon */}
               <button 
                 onClick={() => handleUnblock(contact.id)}
                 className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50/60 rounded-lg transition-all"
@@ -122,17 +112,12 @@ export default function BlockedContactsView({ onBack, onCountChange }) {
           )}
         </div>
       </div>
-
-      {/* ========================================== */}
-      {/* OVERLAY DIALOG MODAL SYSTEM BLOCK           */}
-      {/* ========================================== */}
       {isModalOpen && (
         <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-[1px] animate-in fade-in duration-200 p-4">
           <div 
             className="bg-white w-full max-w-[340px] rounded-2xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden animate-in zoom-in-95 duration-200"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Title Bar Header */}
             <div className="p-4 flex items-center space-x-3 border-b border-gray-100">
               <button 
                 onClick={() => setIsModalOpen(false)}
@@ -145,7 +130,6 @@ export default function BlockedContactsView({ onBack, onCountChange }) {
               <h2 className="text-xs font-bold text-gray-900 tracking-tight">Block New Contact</h2>
             </div>
 
-            {/* Input Search Field Wrapper */}
             <div className="p-3 bg-white">
               <div className="relative flex items-center bg-blue-50/50 rounded-xl px-3 py-2 border border-transparent focus-within:border-blue-200/60 transition-all">
                 <svg className="w-3.5 h-3.5 text-blue-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,7 +145,6 @@ export default function BlockedContactsView({ onBack, onCountChange }) {
               </div>
             </div>
 
-            {/* Pickable Accounts Container Scroll Box */}
             <div className="flex-1 overflow-y-auto px-3 pb-4 max-h-[260px] space-y-1.5">
               {filteredPool.map((item) => (
                 <div 
